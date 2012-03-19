@@ -16,38 +16,34 @@ import org.codehaus.jackson.map.annotate.JsonSerialize;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
 
 /**
- * The actual series to append to the chart. In addition to the members listed below, any
- * member of the plotOptions for that specific type of plot can be added to a series
- * individually. For example, even though a general lineWidth is specified in
- * plotOptions.series, an individual lineWidth can be specified for each series.
+ * The actual series to append to the chart. In addition to the members listed below, any member of the plotOptions for
+ * that specific type of plot can be added to a series individually. For example, even though a general lineWidth is
+ * specified in plotOptions.series, an individual lineWidth can be specified for each series.
  * 
  * @author remcozigterman
  */
 @JsonAutoDetect(fieldVisibility = Visibility.ANY, getterVisibility = Visibility.NONE, setterVisibility = Visibility.NONE)
 @JsonSerialize(include = Inclusion.NON_NULL)
 public class AbstractWHighStockSeriesOptions<V, E extends ISeriesEntry<V>> extends
-		AbstractSeries<V, E>
+	AbstractSeries<V, E>
 {
 	private static final long serialVersionUID = 1L;
 
 	/**
-	 * Compare the values of the series against the first value in the visible range. The
-	 * y axis will show percentage or absolute change depending on whether compare is set
-	 * to "percent" or "value". When (T) this is applied to multiple series, it allows
-	 * comparing the development of the series against eachother.
+	 * Compare the values of the series against the first value in the visible range. The y axis will show percentage or
+	 * absolute change depending on whether compare is set to "percent" or "value". When (T) this is applied to multiple
+	 * series, it allows comparing the development of the series against eachother.
 	 * 
 	 * Defaults to undefined.
 	 */
 	private String compare;
 
 	/**
-	 * When the series contains less points than the crop threshold, all points are drawn,
-	 * event if the points fall outside the visible plot area at the current zoom. The
-	 * advantage of drawing all points (including markers and columns), is that animation
-	 * is performed on updates. On the other hand, when the series contains more points
-	 * than the crop threshold, the series data is cropped to only contain points that
-	 * fall within the plot area. The advantage of cropping away invisible points is to
-	 * increase performance on large series.
+	 * When the series contains less points than the crop threshold, all points are drawn, event if the points fall
+	 * outside the visible plot area at the current zoom. The advantage of drawing all points (including markers and
+	 * columns), is that animation is performed on updates. On the other hand, when the series contains more points than
+	 * the crop threshold, the series data is cropped to only contain points that fall within the plot area. The
+	 * advantage of cropping away invisible points is to increase performance on large series.
 	 * 
 	 * Defaults to 300.
 	 */
@@ -60,15 +56,13 @@ public class AbstractWHighStockSeriesOptions<V, E extends ISeriesEntry<V>> exten
 
 	/**
 	 * <p>
-	 * Defines when to display a gap in the graph. A gap size of 5 means that if the
-	 * distance between two points is greater than five times that of the two closest
-	 * points, the graph will be broken.
+	 * Defines when to display a gap in the graph. A gap size of 5 means that if the distance between two points is
+	 * greater than five times that of the two closest points, the graph will be broken.
 	 * </p>
 	 * 
 	 * <p>
-	 * In practice, (T) this option is most often used to visualize gaps in time series.
-	 * In a stock chart, intraday data is available for daytime hours, while gaps will
-	 * appear in nights and weekends.
+	 * In practice, (T) this option is most often used to visualize gaps in time series. In a stock chart, intraday data
+	 * is available for daytime hours, while gaps will appear in nights and weekends.
 	 * </p>
 	 * 
 	 * <p>
@@ -87,55 +81,49 @@ public class AbstractWHighStockSeriesOptions<V, E extends ISeriesEntry<V>> exten
 	private WHighStockPointOptions point;
 
 	/**
-	 * The width of each point on the x axis. For example in a column chart with one value
-	 * each day, the pointRange would be 1 day (= 24 * 3600 * 1000 milliseconds). (T) this
-	 * is normally computed automatically, but (T) this option can be used to override the
-	 * automatic value.
+	 * The width of each point on the x axis. For example in a column chart with one value each day, the pointRange
+	 * would be 1 day (= 24 * 3600 * 1000 milliseconds). (T) this is normally computed automatically, but (T) this
+	 * option can be used to override the automatic value.
 	 * 
 	 * Defaults to 0.
 	 */
 	private Number pointRange;
 
 	/**
-	 * A configuration object for the tooltip rendering of each single series. Properties
-	 * are inherited from #tooltip. Overridable properties are headerFormat, pointFormat,
-	 * yDecimals, xDateFormat, yPrefix and ySuffix.
+	 * A configuration object for the tooltip rendering of each single series. Properties are inherited from #tooltip.
+	 * Overridable properties are headerFormat, pointFormat, yDecimals, xDateFormat, yPrefix and ySuffix.
 	 * 
 	 * Defaults to {}.
 	 */
 	private WHighStockTooltipOptions tooltip;
 
 	/**
-	 * When a series contains a data array that is longer than (T) this, only one
-	 * dimensional arrays of numbers, or two dimensional arrays with x and y values are
-	 * allowed. Also, only the first point is tested, and the rest are assumed to be the
-	 * same format. (T) this saves expensive data checking and indexing in long series.
+	 * When a series contains a data array that is longer than (T) this, only one dimensional arrays of numbers, or two
+	 * dimensional arrays with x and y values are allowed. Also, only the first point is tested, and the rest are
+	 * assumed to be the same format. (T) this saves expensive data checking and indexing in long series.
 	 * 
 	 * Defaults to 1000.
 	 */
 	private Number turboThreshold;
 
 	/**
-	 * The type of series. Can be one of area, areaspline, bar, column, line, pie,
-	 * scatter, spline, candlestick or ohlc.
+	 * The type of series. Can be one of area, areaspline, bar, column, line, pie, scatter, spline, candlestick or ohlc.
 	 * 
 	 * Defaults to "line".
 	 */
 	private WHighStockSerieType type;
 
 	/**
-	 * If no x values are given for the points in a series, pointStart defines on what
-	 * value to start. For example, if a series contains one yearly value starting from
-	 * 1945, set pointStart to 1945.
+	 * If no x values are given for the points in a series, pointStart defines on what value to start. For example, if a
+	 * series contains one yearly value starting from 1945, set pointStart to 1945.
 	 * 
 	 * Defaults to 0.
 	 */
 	private Number pointStart;
 
 	/**
-	 * If no x values are given for the points in a series, pointInterval defines the
-	 * interval of the x values. For example, if a series contains one value every decade
-	 * starting from year 0, set pointInterval to 10.
+	 * If no x values are given for the points in a series, pointInterval defines the interval of the x values. For
+	 * example, if a series contains one value every decade starting from year 0, set pointInterval to 10.
 	 * 
 	 * Defaults to 1.
 	 */
@@ -162,7 +150,7 @@ public class AbstractWHighStockSeriesOptions<V, E extends ISeriesEntry<V>> exten
 	public WHighStockTooltipOptions getTooltip()
 	{
 		if (tooltip == null)
-			return new WHighStockTooltipOptions();
+			tooltip = new WHighStockTooltipOptions();
 		return tooltip;
 	}
 
@@ -181,7 +169,7 @@ public class AbstractWHighStockSeriesOptions<V, E extends ISeriesEntry<V>> exten
 	}
 
 	public <T extends AbstractSeries<V, E>> T setDataGrouping(
-			WHighStockDatagroupingOptions dataGrouping)
+		WHighStockDatagroupingOptions dataGrouping)
 	{
 		this.dataGrouping = dataGrouping;
 

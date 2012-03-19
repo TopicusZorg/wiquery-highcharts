@@ -95,6 +95,29 @@ public class WHighChartChartEventsOptions implements Serializable
 	 */
 	private WHighChartFunction selection;
 
+	/**
+	 * Fires when the legend item belonging to the series is clicked. The this keyword refers to the series object
+	 * itself. One parameter, event, is passed to the function. This contains common event information based on jQuery
+	 * or MooTools depending on which library is used as the base for Highcharts. The default action is to toggle the
+	 * visibility of the series. This can be prevented by returning false or calling event.preventDefault().
+	 */
+	private WHighChartFunction legendItemClick;
+
+	/**
+	 * Fires when the mouse enters the graph. The this keyword refers to the series object itself. One parameter, event,
+	 * is passed to the function. This contains common event information based on jQuery or MooTools depending on which
+	 * library is used as the base for Highcharts.
+	 */
+	private WHighChartFunction mouseOver;
+
+	/**
+	 * Fires when the mouse leaves the graph. The this keyword refers to the series object itself. One parameter, event,
+	 * is passed to the function. This contains common event information based on jQuery or MooTools depending on which
+	 * library is used as the base for Highcharts. If the stickyTracking option is true, mouseOut doesn't happen before
+	 * the mouse enters another graph or leaves the plot area.
+	 */
+	private WHighChartFunction mouseOut;
+
 	public WHighChartFunction getAddSeries()
 	{
 		return addSeries;
@@ -173,5 +196,53 @@ public class WHighChartChartEventsOptions implements Serializable
 	public WHighChartChartEventsOptions setSelection(String formatter)
 	{
 		return setSelection(new WHighChartFunctionString(formatter));
+	}
+
+	public WHighChartFunction getLegendItemClick()
+	{
+		return legendItemClick;
+	}
+
+	public WHighChartChartEventsOptions setLegendItemClick(WHighChartFunction legendItemClick)
+	{
+		this.legendItemClick = legendItemClick;
+		return this;
+	}
+
+	public WHighChartChartEventsOptions setLegendItemClick(String legendItemClick)
+	{
+		return setLegendItemClick(new WHighChartFunctionString(legendItemClick));
+	}
+
+	public WHighChartFunction getMouseOver()
+	{
+		return mouseOver;
+	}
+
+	public WHighChartChartEventsOptions setMouseOver(WHighChartFunction mouseOver)
+	{
+		this.mouseOver = mouseOver;
+		return this;
+	}
+
+	public WHighChartChartEventsOptions setMouseOver(String mouseOver)
+	{
+		return setMouseOver(new WHighChartFunctionString(mouseOver));
+	}
+
+	public WHighChartFunction getMouseOut()
+	{
+		return mouseOut;
+	}
+
+	public WHighChartChartEventsOptions setMouseOut(WHighChartFunction mouseOut)
+	{
+		this.mouseOut = mouseOut;
+		return this;
+	}
+
+	public WHighChartChartEventsOptions setMouseOut(String mouseOut)
+	{
+		return setMouseOut(new WHighChartFunctionString(mouseOut));
 	}
 }
