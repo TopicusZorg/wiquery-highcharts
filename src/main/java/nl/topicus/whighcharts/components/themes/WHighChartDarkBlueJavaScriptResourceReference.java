@@ -3,7 +3,7 @@ package nl.topicus.whighcharts.components.themes;
 import org.odlabs.wiquery.core.resources.WiQueryJavaScriptResourceReference;
 
 public class WHighChartDarkBlueJavaScriptResourceReference extends
-		WiQueryJavaScriptResourceReference
+	WiQueryJavaScriptResourceReference
 {
 	private static final long serialVersionUID = -4771815414204892357L;
 
@@ -13,7 +13,7 @@ public class WHighChartDarkBlueJavaScriptResourceReference extends
 	private WHighChartDarkBlueJavaScriptResourceReference()
 	{
 		super(WHighChartDarkBlueJavaScriptResourceReference.class,
-			"jquery.highcharts.exporting.js");
+			"jquery.highcharts.dark-blue.js");
 	}
 
 	public static WHighChartDarkBlueJavaScriptResourceReference get()
