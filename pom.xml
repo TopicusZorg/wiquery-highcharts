@@ -13,7 +13,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<wicket.version>1.5.5</wicket.version>
-		<wiquery.version>1.5.5</wiquery.version>
+		<wiquery.version>1.5.4</wiquery.version>
 		<slf4j.version>[1.6,1.6.10]</slf4j.version>
 		<junit.version>4.9</junit.version>
 		<jetty.version>6.1.26</jetty.version>
