@@ -3,7 +3,7 @@ package nl.topicus.whighstock.components.adapters;
 import org.odlabs.wiquery.core.resources.WiQueryJavaScriptResourceReference;
 
 public class WHighStockPrototypeJavaScriptResourceReference extends
-		WiQueryJavaScriptResourceReference
+	WiQueryJavaScriptResourceReference
 {
 
 	private static final long serialVersionUID = 8963995776094930442L;
@@ -14,7 +14,7 @@ public class WHighStockPrototypeJavaScriptResourceReference extends
 	private WHighStockPrototypeJavaScriptResourceReference()
 	{
 		super(WHighStockPrototypeJavaScriptResourceReference.class,
-			"jquery.highstock.prototype-adapter.js");
+			"prototype-adapter.js");
 	}
 
 	public static WHighStockPrototypeJavaScriptResourceReference get()

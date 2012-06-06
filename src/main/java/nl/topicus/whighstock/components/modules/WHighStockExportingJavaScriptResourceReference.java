@@ -13,7 +13,7 @@ public class WHighStockExportingJavaScriptResourceReference extends
 	private WHighStockExportingJavaScriptResourceReference()
 	{
 		super(WHighStockExportingJavaScriptResourceReference.class,
-			"jquery.highstock.canvas-tools.js");
+			"canvas-tools.js");
 	}
 
 	public static WHighStockExportingJavaScriptResourceReference get()

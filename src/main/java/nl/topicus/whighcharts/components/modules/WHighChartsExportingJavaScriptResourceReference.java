@@ -3,7 +3,7 @@ package nl.topicus.whighcharts.components.modules;
 import org.odlabs.wiquery.core.resources.WiQueryJavaScriptResourceReference;
 
 public class WHighChartsExportingJavaScriptResourceReference extends
-		WiQueryJavaScriptResourceReference
+	WiQueryJavaScriptResourceReference
 {
 	private static final long serialVersionUID = -4771815414204892357L;
 
@@ -13,7 +13,7 @@ public class WHighChartsExportingJavaScriptResourceReference extends
 	private WHighChartsExportingJavaScriptResourceReference()
 	{
 		super(WHighChartsExportingJavaScriptResourceReference.class,
-			"jquery.highcharts.exporting.js");
+			"exporting.js");
 	}
 
 	public static WHighChartsExportingJavaScriptResourceReference get()

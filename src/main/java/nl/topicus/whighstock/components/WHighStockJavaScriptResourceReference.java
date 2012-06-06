@@ -11,7 +11,7 @@ public class WHighStockJavaScriptResourceReference extends WiQueryJavaScriptReso
 
 	private WHighStockJavaScriptResourceReference()
 	{
-		super(WHighStockJavaScriptResourceReference.class, "jquery.highstock.js");
+		super(WHighStockJavaScriptResourceReference.class, "highstock.js");
 	}
 
 	public static WHighStockJavaScriptResourceReference get()

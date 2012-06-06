@@ -3,7 +3,7 @@ package nl.topicus.whighcharts.components.adapters;
 import org.odlabs.wiquery.core.resources.WiQueryJavaScriptResourceReference;
 
 public class WHighChartsMooToolsJavaScriptResourceReference extends
-		WiQueryJavaScriptResourceReference
+	WiQueryJavaScriptResourceReference
 {
 	private static final long serialVersionUID = -4771815414204892357L;
 
@@ -13,7 +13,7 @@ public class WHighChartsMooToolsJavaScriptResourceReference extends
 	private WHighChartsMooToolsJavaScriptResourceReference()
 	{
 		super(WHighChartsMooToolsJavaScriptResourceReference.class,
-			"jquery.highcharts.mootools-adapter.js");
+			"mootools-adapter.js");
 	}
 
 	public static WHighChartsMooToolsJavaScriptResourceReference get()

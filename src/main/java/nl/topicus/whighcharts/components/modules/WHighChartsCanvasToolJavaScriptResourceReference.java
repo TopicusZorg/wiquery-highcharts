@@ -13,7 +13,7 @@ public class WHighChartsCanvasToolJavaScriptResourceReference extends
 	private WHighChartsCanvasToolJavaScriptResourceReference()
 	{
 		super(WHighChartsCanvasToolJavaScriptResourceReference.class,
-			"jquery.highcharts.canvas-tools.js");
+			"canvas-tools.js");
 	}
 
 	public static WHighChartsCanvasToolJavaScriptResourceReference get()

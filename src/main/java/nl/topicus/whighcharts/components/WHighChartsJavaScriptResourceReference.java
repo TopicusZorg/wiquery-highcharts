@@ -11,7 +11,7 @@ public class WHighChartsJavaScriptResourceReference extends WiQueryJavaScriptRes
 
 	private WHighChartsJavaScriptResourceReference()
 	{
-		super(WHighChartsJavaScriptResourceReference.class, "jquery.highcharts.js");
+		super(WHighChartsJavaScriptResourceReference.class, "highcharts.js");
 	}
 
 	public static WHighChartsJavaScriptResourceReference get()

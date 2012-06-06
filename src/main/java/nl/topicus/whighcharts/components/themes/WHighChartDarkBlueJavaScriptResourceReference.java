@@ -13,7 +13,7 @@ public class WHighChartDarkBlueJavaScriptResourceReference extends
 	private WHighChartDarkBlueJavaScriptResourceReference()
 	{
 		super(WHighChartDarkBlueJavaScriptResourceReference.class,
-			"jquery.highcharts.dark-blue.js");
+			"dark-blue.js");
 	}
 
 	public static WHighChartDarkBlueJavaScriptResourceReference get()

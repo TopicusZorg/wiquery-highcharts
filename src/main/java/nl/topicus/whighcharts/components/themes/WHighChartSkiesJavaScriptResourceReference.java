@@ -13,7 +13,7 @@ public class WHighChartSkiesJavaScriptResourceReference extends
 	private WHighChartSkiesJavaScriptResourceReference()
 	{
 		super(WHighChartSkiesJavaScriptResourceReference.class,
-			"jquery.highcharts.skies.js");
+			"skies.js");
 	}
 
 	public static WHighChartSkiesJavaScriptResourceReference get()

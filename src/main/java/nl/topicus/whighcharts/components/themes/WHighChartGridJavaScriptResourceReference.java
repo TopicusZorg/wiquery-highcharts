@@ -11,7 +11,7 @@ public class WHighChartGridJavaScriptResourceReference extends WiQueryJavaScript
 
 	private WHighChartGridJavaScriptResourceReference()
 	{
-		super(WHighChartGridJavaScriptResourceReference.class, "jquery.highcharts.grid.js");
+		super(WHighChartGridJavaScriptResourceReference.class, "grid.js");
 	}
 
 	public static WHighChartGridJavaScriptResourceReference get()
