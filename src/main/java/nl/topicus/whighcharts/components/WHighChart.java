@@ -58,6 +58,11 @@ public class WHighChart<V, E extends ISeriesEntry<V>> extends WebMarkupContainer
 			response.render(JavaScriptHeaderItem.forReference(WHighChartsExportingJavaScriptResourceReference.get()));
 		}
 
+		response.render(OnDomReadyHeaderItem.forScript(statement().render()));
+	}
+
+	public JsStatement statement()
+	{
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.getSerializationConfig().setSerializationInclusion(Inclusion.NON_NULL);
 		mapper.configure(JsonGenerator.Feature.QUOTE_FIELD_NAMES, false);
@@ -117,7 +122,7 @@ public class WHighChart<V, E extends ISeriesEntry<V>> extends WebMarkupContainer
 			new JsStatement().append("var " + getMarkupId() + " = new Highcharts.Chart( "
 				+ optionsStr + " );\n");
 
-		response.render(OnDomReadyHeaderItem.forScript(jsStatement.render()));
+		return jsStatement;
 	}
 
 	@SuppressWarnings("unchecked")
