@@ -1,9 +1,8 @@
 package nl.topicus.whighstock.components.modules;
 
-import org.odlabs.wiquery.core.resources.WiQueryJavaScriptResourceReference;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
-public class WHighStockCanvasToolJavaScriptResourceReference extends
-	WiQueryJavaScriptResourceReference
+public class WHighStockCanvasToolJavaScriptResourceReference extends JavaScriptResourceReference
 {
 	private static final long serialVersionUID = -6170700931152674507L;
 

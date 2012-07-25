@@ -1,9 +1,8 @@
 package nl.topicus.whighstock.components.adapters;
 
-import org.odlabs.wiquery.core.resources.WiQueryJavaScriptResourceReference;
+import org.apache.wicket.request.resource.JavaScriptResourceReference;
 
-public class WHighStockPrototypeJavaScriptResourceReference extends
-	WiQueryJavaScriptResourceReference
+public class WHighStockPrototypeJavaScriptResourceReference extends JavaScriptResourceReference
 {
 
 	private static final long serialVersionUID = 8963995776094930442L;

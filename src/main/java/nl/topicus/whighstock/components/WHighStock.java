@@ -13,7 +13,9 @@ import nl.topicus.whighstock.options.WHighStockOptions;
 
 import org.apache.wicket.Application;
 import org.apache.wicket.RuntimeConfigurationType;
-import org.apache.wicket.markup.html.IHeaderResponse;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.JavaScriptHeaderItem;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.model.IModel;
 import org.codehaus.jackson.JsonGenerationException;
@@ -22,7 +24,6 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
-import org.odlabs.wiquery.core.IWiQueryPlugin;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 
 /**
@@ -30,11 +31,11 @@ import org.odlabs.wiquery.core.javascript.JsStatement;
  * @author remcozigterman
  * 
  */
-public class WHighStock extends WebMarkupContainer implements IWiQueryPlugin
+public class WHighStock extends WebMarkupContainer
 {
 	private static final long serialVersionUID = 1L;
 
-	private WHighStockOptions options = new WHighStockOptions(this);
+	private final WHighStockOptions options = new WHighStockOptions(this);
 
 	public WHighStock(String id)
 	{
@@ -42,7 +43,7 @@ public class WHighStock extends WebMarkupContainer implements IWiQueryPlugin
 	}
 
 	public WHighStock(String id,
-			IModel< ? extends Collection< ? extends ISeries< ? , ISeriesEntry< ? >>>> model)
+		IModel<? extends Collection<? extends ISeries<?, ISeriesEntry<?>>>> model)
 	{
 		super(id, model);
 		setOutputMarkupId(true);
@@ -56,17 +57,14 @@ public class WHighStock extends WebMarkupContainer implements IWiQueryPlugin
 	@Override
 	public void renderHead(IHeaderResponse response)
 	{
-		response.renderJavaScriptReference(WHighStockJavaScriptResourceReference.get());
-		response.renderJavaScriptReference(WHighChartsExtraJavaScriptResourceReference.get());
+		response.render(JavaScriptHeaderItem.forReference(WHighStockJavaScriptResourceReference.get()));
+		response.render(JavaScriptHeaderItem.forReference(WHighChartsExtraJavaScriptResourceReference.get()));
 
-		if (getOptions().getExporting().getEnabled() != null
-			&& getOptions().getExporting().getEnabled().booleanValue())
-			response.renderJavaScriptReference(WHighChartsExtraJavaScriptResourceReference.get());
-	}
+		if (getOptions().getExporting().getEnabled() != null && getOptions().getExporting().getEnabled().booleanValue())
+		{
+			response.render(JavaScriptHeaderItem.forReference(WHighChartsExtraJavaScriptResourceReference.get()));
+		}
 
-	@Override
-	public JsStatement statement()
-	{
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.getSerializationConfig().setSerializationInclusion(Inclusion.NON_NULL);
 		mapper.configure(JsonGenerator.Feature.QUOTE_FIELD_NAMES, false);
@@ -131,12 +129,12 @@ public class WHighStock extends WebMarkupContainer implements IWiQueryPlugin
 			new JsStatement().append("var " + getMarkupId() + " = new Highcharts.StockChart( "
 				+ optionsStr + " );\n");
 
-		return jsStatement;
+		response.render(OnDomReadyHeaderItem.forScript(jsStatement.render()));
 	}
 
 	@SuppressWarnings("unchecked")
-	public IModel< ? extends Collection< ? extends ISeries< ? , ISeriesEntry< ? >>>> getModel()
+	public IModel<? extends Collection<? extends ISeries<?, ISeriesEntry<?>>>> getModel()
 	{
-		return (IModel< ? extends Collection< ? extends ISeries< ? , ISeriesEntry< ? >>>>) getDefaultModel();
+		return (IModel<? extends Collection<? extends ISeries<?, ISeriesEntry<?>>>>) getDefaultModel();
 	}
 }

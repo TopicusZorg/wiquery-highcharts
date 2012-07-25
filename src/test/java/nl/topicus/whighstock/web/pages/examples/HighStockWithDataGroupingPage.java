@@ -14,7 +14,8 @@ import nl.topicus.whighstock.options.series.WHighStockValueSeries;
 import nl.topicus.whighstock.options.yaxis.WHighStockYAxisOptions;
 
 import org.apache.commons.io.FileUtils;
-import org.odlabs.wiquery.core.javascript.JsStatement;
+import org.apache.wicket.markup.head.IHeaderResponse;
+import org.apache.wicket.markup.head.OnDomReadyHeaderItem;
 
 public class HighStockWithDataGroupingPage extends BasePage
 {
@@ -26,15 +27,15 @@ public class HighStockWithDataGroupingPage extends BasePage
 		{
 			private static final long serialVersionUID = 1L;
 
+			/**
+			 * @see nl.topicus.whighstock.components.WHighStock#renderHead(org.apache.wicket.markup.head.IHeaderResponse)
+			 */
 			@Override
-			public JsStatement statement()
+			public void renderHead(IHeaderResponse response)
 			{
-				JsStatement statement = new JsStatement();
-				statement.append("var start = + new Date();\n");
-				statement.append(super.statement().render());
-				return statement;
+				response.render(OnDomReadyHeaderItem.forScript("var start = + new Date();"));
+				super.renderHead(response);
 			}
-
 		};
 
 		StringBuilder onLoad = new StringBuilder("	this.setTitle(null, {\n");

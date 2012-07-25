@@ -5,13 +5,14 @@ import nl.topicus.whighcharts.options.jackson.ToStringNoQuoteSerializer;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
 import org.apache.wicket.request.IRequestParameters;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 @JsonSerialize(using = ToStringNoQuoteSerializer.class)
 public class WHighChartFunctionCallback extends AbstractDefaultAjaxBehavior implements
-		WHighChartFunction
+	WHighChartFunction
 {
 	private static final long serialVersionUID = 1L;
 
@@ -30,11 +31,14 @@ public class WHighChartFunctionCallback extends AbstractDefaultAjaxBehavior impl
 		return builder.toString();
 	}
 
+	/**
+	 * @see org.apache.wicket.ajax.AbstractDefaultAjaxBehavior#updateAjaxAttributes(org.apache.wicket.ajax.attributes.AjaxRequestAttributes)
+	 */
 	@Override
-	protected CharSequence getCallbackScript()
+	protected void updateAjaxAttributes(AjaxRequestAttributes attributes)
 	{
-		return generateCallbackScript("wicketAjaxGet('" + getCallbackUrl()
-			+ "&' + wHighChartsSerializeEvent(event)");
+		super.updateAjaxAttributes(attributes);
+		attributes.getDynamicExtraParameters().add("wHighChartsSerializeEvent(event)");
 	}
 
 	@Override
