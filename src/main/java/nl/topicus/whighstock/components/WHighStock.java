@@ -24,6 +24,7 @@ import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jackson.map.annotate.JsonSerialize.Inclusion;
+import org.odlabs.wiquery.core.javascript.JsQuery;
 import org.odlabs.wiquery.core.javascript.JsStatement;
 
 /**
@@ -130,9 +131,7 @@ public class WHighStock extends WebMarkupContainer
 			e.printStackTrace();
 		}
 
-		JsStatement jsStatement =
-			new JsStatement().append("var " + getMarkupId() + " = new Highcharts.StockChart( "
-				+ optionsStr + " );\n");
+		JsStatement jsStatement = new JsQuery(this).$().chain("highcharts", "'StockChart'", optionsStr);
 
 		return jsStatement;
 	}
