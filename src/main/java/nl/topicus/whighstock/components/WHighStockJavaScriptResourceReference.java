@@ -1,5 +1,7 @@
 package nl.topicus.whighstock.components;
 
+import org.apache.wicket.Application;
+import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
 
 public class WHighStockJavaScriptResourceReference extends JQueryPluginResourceReference
@@ -11,7 +13,19 @@ public class WHighStockJavaScriptResourceReference extends JQueryPluginResourceR
 
 	private WHighStockJavaScriptResourceReference()
 	{
-		super(WHighStockJavaScriptResourceReference.class, "highstock.js");
+		super(WHighStockJavaScriptResourceReference.class, getResourceName());
+	}
+
+	private static String getResourceName()
+	{
+		String base = "highstock.js";
+
+		if (RuntimeConfigurationType.DEVELOPMENT == Application.get().getConfigurationType())
+		{
+			base = "highstock.src.js";
+		}
+
+		return base;
 	}
 
 	public static WHighStockJavaScriptResourceReference get()

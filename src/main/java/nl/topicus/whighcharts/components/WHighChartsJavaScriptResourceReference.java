@@ -1,5 +1,7 @@
 package nl.topicus.whighcharts.components;
 
+import org.apache.wicket.Application;
+import org.apache.wicket.RuntimeConfigurationType;
 import org.apache.wicket.resource.JQueryPluginResourceReference;
 
 public class WHighChartsJavaScriptResourceReference extends JQueryPluginResourceReference
@@ -11,7 +13,19 @@ public class WHighChartsJavaScriptResourceReference extends JQueryPluginResource
 
 	private WHighChartsJavaScriptResourceReference()
 	{
-		super(WHighChartsJavaScriptResourceReference.class, "highcharts.js");
+		super(WHighChartsJavaScriptResourceReference.class, getResourceName());
+	}
+
+	private static String getResourceName()
+	{
+		String base = "highcharts.js";
+
+		if (RuntimeConfigurationType.DEVELOPMENT == Application.get().getConfigurationType())
+		{
+			base = "highcharts.src.js";
+		}
+
+		return base;
 	}
 
 	public static WHighChartsJavaScriptResourceReference get()
